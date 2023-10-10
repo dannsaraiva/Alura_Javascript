@@ -1,4 +1,6 @@
 //Variáveis.
+let numerosSorteados = [];
+let numeroMaximo = 10;
 let titulo = "Número secreto";
 let descricao = "Digite o número entre 1 e 10";
 let numeroSecreto = gerarNumeroAleatorio();
@@ -9,6 +11,8 @@ let tentativas = 1;
 function trocarTextos(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
+
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', { rate: 1.0 });
 };
 
 //Mensagem inicial.
@@ -20,7 +24,18 @@ mensagemInicial();
 
 //Gerar numero aleatório.
 function gerarNumeroAleatorio() {
-    return parseInt(Math.random() * 10 + 1);
+    let numeroEscolhido = parseInt(Math.random() * numeroMaximo + 1);
+    let quantidadeNumeroEscolhido = numerosSorteados.length;
+
+    if (quantidadeNumeroEscolhido == numeroMaximo) {
+        numerosSorteados = []
+    };
+    if (numerosSorteados.includes(numeroEscolhido)) {
+        return gerarNumeroAleatorio();
+    } else {
+        numerosSorteados.push(numeroEscolhido);
+        return numeroEscolhido;
+    }
 };
 
 //Método verifica o número.
