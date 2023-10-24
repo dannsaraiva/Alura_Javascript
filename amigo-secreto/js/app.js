@@ -6,6 +6,11 @@ const adicionarAmigo = () => {
     let amigo = document.getElementById('nome-amigo');
     let lista = document.getElementById('lista-amigos');
 
+    // if (listaAmigos.includes(amigo.value)) {
+    //     alert("Nome já incluido");
+    //     return;
+    // };
+
     if (amigo.value === "") {
         alert("Digite o nome!");
 
@@ -59,5 +64,5 @@ const reiniciarSorteio = () => {
     listaAmigos = [];
     document.getElementById('lista-amigos').innerHTML = "";
     document.getElementById('lista-sorteio').innerHTML = "";
-    
+
 };
